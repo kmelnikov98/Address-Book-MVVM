@@ -1,0 +1,52 @@
+﻿<Window x:Class="ListView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ListView"
+        mc:Ignorable="d"
+        Title="Test For List View" Height="450" Width="800">
+
+    
+    <!--Can take multiple datatempaltes, and for different classes, 
+    if they inherit from the interface, they all can coexist in a single listview, while having different styles.-->
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:AddressBook}" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Address}"/>
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding Number}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:AddressBookOne}">
+            <StackPanel Orientation="Horizontal" Background="Blue">
+                <TextBlock Text="{Binding Address}"/>
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding Number}"/>
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock Text="Ez Clap"
+                   Width="100"
+                   Grid.Column="0"
+                   Height="100"/>
+
+        <ListView x:Name="AddressBook"
+                  SelectionMode="Single" 
+                  Grid.Column="1"
+                  HorizontalAlignment="Stretch"       
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ItemsSource="{Binding AddressBooks}">
+        </ListView>
+    </Grid>
+</Window>
