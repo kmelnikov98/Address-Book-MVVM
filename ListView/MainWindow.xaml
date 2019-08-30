@@ -9,22 +9,43 @@
 
     
     <!--Can take multiple datatempaltes, and for different classes, 
-    if they inherit from the interface, they all can coexist in a single listview, while having different styles.-->
+    if they inherit from the same interface, they all can coexist in a single listview, while having different styles.
+    ex single and multi export-->
     
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:AddressBook}" >
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Address}"/>
-                <TextBlock Text="{Binding Name}"/>
-                <TextBlock Text="{Binding Number}"/>
-            </StackPanel>
+        <DataTemplate DataType="{x:Type local:AddressBook}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Text="{Binding Address}"
+                         Grid.Column="0"
+                         Background="Transparent"
+                         Margin="0 0 1 0"/>
+                <TextBox Text="{Binding Name}"
+                         Grid.Column="1"
+                         Background="Transparent"
+                         Margin="0 0 1 0"/>
+                <TextBox Text="{Binding Number}"
+                         Background="Transparent"
+                         Grid.Column="2"
+                         Margin="0 0 0 0"/>
+            </Grid>
         </DataTemplate>
 
+        <!--Takes in the properties of the addressbookOne, and binds to text-->
+        
         <DataTemplate DataType="{x:Type local:AddressBookOne}">
             <StackPanel Orientation="Horizontal" Background="Blue">
-                <TextBlock Text="{Binding Address}"/>
-                <TextBlock Text="{Binding Name}"/>
-                <TextBlock Text="{Binding Number}"/>
+                <TextBlock Text="{Binding Address}" 
+                           Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding Name}"
+                           Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding Number}"
+                           Margin="0 0 10 0"/>
             </StackPanel>
         </DataTemplate>
 
@@ -34,19 +55,63 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical">
+
+            <StackPanel Grid.Column="0"
+                        Margin="0 0 0 5"
+                        Orientation="Horizontal">
+                <TextBlock Text="Name: "
+                           Margin="0 0 11 0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0"
+                        Margin="0 0 0 5"
+                        Orientation="Horizontal">
+                <TextBlock Text="Address: "/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0"
+                        Margin="0 0 0 5"
+                        Orientation="Horizontal">
+                <TextBlock Text="Number: "/>
+                <Button Content="Add"
+                        Margin="5 0 0 0"
+                    HorizontalAlignment="Left"
+                    Command="{Binding AddAddressCommand}"
+                    Width="50"/>
+            </StackPanel>
+
+        </StackPanel>
 
 
-        <TextBlock Text="Ez Clap"
-                   Width="100"
-                   Grid.Column="0"
-                   Height="100"/>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
 
-        <ListView x:Name="AddressBook"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        
+            <TextBlock Text="Address"
+                       Grid.Column="0"/>
+            <TextBlock Text="Name"
+                       Grid.Column="1"/>
+            <TextBlock Text="Number"
+                       Grid.Column="2"/>
+                
+            <ListView x:Name="AddressBook"
                   SelectionMode="Single" 
-                  Grid.Column="1"
+                  Grid.ColumnSpan="3"
+                  Grid.Row="1"
+                      BorderThickness="0"
                   HorizontalAlignment="Stretch"       
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ItemsSource="{Binding AddressBooks}">
         </ListView>
+        </Grid>
     </Grid>
 </Window>
