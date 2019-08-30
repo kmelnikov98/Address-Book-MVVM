@@ -8,6 +8,8 @@ namespace ListView
 {
 	public interface IAddressFactory
 	{
+		IAddressBook Create();
 		IAddressBook Create(string name, string address, string number);
+
 	}
 }

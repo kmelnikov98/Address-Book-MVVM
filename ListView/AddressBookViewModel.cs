@@ -23,25 +23,6 @@ namespace ListView
 
 		}
 
-
-		public string Name
-		{
-			get { return m_name; }
-			set { m_name = value; }
-		}
-
-		public string Number
-		{
-			get { return m_number; }
-			set { m_number = value; }
-		}
-
-		public string Address
-		{
-			get { return m_address; }
-			set { m_address = value; }
-		}
-
 		public ObservableCollection<IAddressBook> AddressBooks { get; set; }
 
 		public ICommand AddAddressCommand => new RelayCommand(param => AddAddressInfo_());
@@ -53,6 +34,7 @@ namespace ListView
 		}
 
 
+		//TODO: Add a selected item. A selected item allows interaction with a specific element. For example, you can delete the item. 
 
 	}
 }
