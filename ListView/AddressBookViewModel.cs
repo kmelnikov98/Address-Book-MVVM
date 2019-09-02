@@ -4,37 +4,54 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ListView
 {
 
-	public class AddressBookViewModel
-	{
-		private readonly IAddressFactory m_addressFactory;
-		private string m_number;
-		private string m_name;
-		private string m_address;
+    public class AddressBookViewModel
+    {
+        private readonly IAddressFactory m_addressFactory;
 
-		public AddressBookViewModel()
+        public AddressBookViewModel()
+        {
+            AddressBooks = new ObservableCollection<IAddressBook>();
+            m_addressFactory = new AddressFactory();
+
+        }
+
+        public IAddressBook SelectedAddress { get; set; }
+
+        public ObservableCollection<IAddressBook> AddressBooks { get; set; }
+
+
+        #region ICommand Implementation
+
+        public ICommand AddAddressCommand => new RelayCommand(param => AddAddressInfo_());
+
+        public ICommand RemoveAddressCommand => new RelayCommand(param => RemoveAddress_(param));
+
+        private void AddAddressInfo_()
 		{
-			AddressBooks = new ObservableCollection<IAddressBook>();
-			m_addressFactory = new AddressFactory();
-
+			AddressBooks.Add(m_addressFactory.Create());
 		}
 
-		public ObservableCollection<IAddressBook> AddressBooks { get; set; }
+        //no events subscribed to, so don't need to dispose
+        private void RemoveAddress_(object param)
+        {
+            var address = param as AddressBook;
+            if(address != null)
+            {
+                SelectedAddress = address;
+            }
+  
+            if(address != null)
+            {
+                AddressBooks.Remove(SelectedAddress);
+            }
+        }
 
-		public ICommand AddAddressCommand => new RelayCommand(param => AddAddressInfo_());
-
-		private void AddAddressInfo_()
-		{
-			AddressBooks.Add(m_addressFactory.Create(m_name, m_address, m_number));
-
-		}
-
-
-		//TODO: Add a selected item. A selected item allows interaction with a specific element. For example, you can delete the item. 
-
-	}
+        #endregion
+    }
 }
