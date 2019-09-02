@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace ListView
 {
-	public class AddressBookOne: IAddressBook
+	public class AddressInfo : IAddressInfo
 	{
-		public AddressBookOne(string address, string name, string num)
-		: this()
+		public AddressInfo(string address, string name, string num)
+			: this()
 		{
 			Address = address;
 			Name = name;
 			Number = num;
 		}
 
-		public AddressBookOne()
+		public AddressInfo()
 		{
 
 		}
@@ -28,4 +28,3 @@ namespace ListView
 		public string Number { get; set; }
 	}
 }
-

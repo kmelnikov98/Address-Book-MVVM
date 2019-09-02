@@ -8,14 +8,14 @@ namespace ListView
 {
 	public class AddressFactory: IAddressFactory
 	{
-		public IAddressBook Create()
+		public IAddressInfo Create()
 		{
-			return new AddressBook();
+			return new AddressInfo();
 		}
 
-		public IAddressBook Create(string name, string address, string number)
+		public IAddressInfo Create(string name, string address, string number)
 		{
-			return new AddressBook(name, address, number);
+			return new AddressInfo(name, address, number);
 		}
 	}
 }

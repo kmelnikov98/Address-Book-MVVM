@@ -19,7 +19,7 @@
     -->
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:AddressBook}">
+        <DataTemplate DataType="{x:Type local:AddressInfo}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" MinWidth="250" />
@@ -62,7 +62,7 @@
 
         <!--  Takes in the properties of the addressbookOne, and binds to text  -->
 
-        <DataTemplate DataType="{x:Type local:AddressBookOne}">
+        <DataTemplate DataType="{x:Type local:AddressInfoOne}">
             <StackPanel Background="Blue" Orientation="Horizontal">
                 <TextBlock Margin="0,0,10,0" Text="{Binding Address}" />
                 <TextBlock Margin="0,0,10,0" Text="{Binding Name}" />
@@ -108,7 +108,7 @@
                 Grid.ColumnSpan="3"
                 HorizontalAlignment="Stretch"
                 BorderThickness="0"
-                ItemsSource="{Binding AddressBooks}"
+                ItemsSource="{Binding AddressBook}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 SelectedItem="{Binding SelectedAddress}"
                 SelectionMode="Single" />

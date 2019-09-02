@@ -68,15 +68,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddressBook.cs" />
-    <Compile Include="AddressBookOne.cs" />
+    <Compile Include="AddressInfo.cs" />
+    <Compile Include="AddressInfoOne.cs" />
     <Compile Include="AddressFactory.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AddressBookViewModel.cs" />
-    <Compile Include="IAddressBook.cs" />
+    <Compile Include="IAddressInfo.cs" />
     <Compile Include="IAddressFactory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

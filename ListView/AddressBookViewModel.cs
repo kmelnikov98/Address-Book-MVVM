@@ -16,14 +16,14 @@ namespace ListView
 
         public AddressBookViewModel()
         {
-            AddressBooks = new ObservableCollection<IAddressBook>();
+            AddressBook = new ObservableCollection<IAddressInfo>();
             m_addressFactory = new AddressFactory();
 
         }
 
-        public IAddressBook SelectedAddress { get; set; }
+        public IAddressInfo SelectedAddress { get; set; }
 
-        public ObservableCollection<IAddressBook> AddressBooks { get; set; }
+        public ObservableCollection<IAddressInfo> AddressBook { get; set; }
 
 
         #region ICommand Implementation
@@ -34,13 +34,13 @@ namespace ListView
 
         private void AddAddressInfo_()
 		{
-			AddressBooks.Add(m_addressFactory.Create());
+			AddressBook.Add(m_addressFactory.Create());
 		}
 
         //no events subscribed to, so don't need to dispose
         private void RemoveAddress_(object param)
         {
-            var address = param as AddressBook;
+            var address = param as AddressInfo;
             if(address != null)
             {
                 SelectedAddress = address;
@@ -48,7 +48,7 @@ namespace ListView
   
             if(address != null)
             {
-                AddressBooks.Remove(SelectedAddress);
+                AddressBook.Remove(SelectedAddress);
             }
         }
 

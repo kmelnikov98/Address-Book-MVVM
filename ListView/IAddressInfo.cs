@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ListView
 {
-	public interface IAddressBook
+	public interface IAddressInfo
 	{
 		string Address { get; set; }
 
