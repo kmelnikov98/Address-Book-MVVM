@@ -17,5 +17,11 @@ namespace ListView
 		{
 			return new AddressInfo(name, address, number);
 		}
-	}
+
+        public List<IAddressInfo> Create(string path)
+        {
+            //take path, parse list and then make multiple create values, make it into a list, then use AddRange inside the ViewModel to add to the AddressBook observableCollection...
+            return new List<IAddressInfo>(); //test
+        }
+    }
 }

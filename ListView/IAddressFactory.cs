@@ -10,6 +10,7 @@ namespace ListView
 	{
 		IAddressInfo Create();
 		IAddressInfo Create(string name, string address, string number);
+        List<IAddressInfo> Create(string path);
 
-	}
+    }
 }
