@@ -11,7 +11,7 @@ using System.Windows.Input;
 namespace ListView
 {
 
-    public class AddressBookViewModel
+    public class AddressBookViewModel: IDisposable
     {
         private readonly IAddressFactory m_addressFactory;
         private readonly string m_filepath;
@@ -28,7 +28,7 @@ namespace ListView
         public ObservableCollection<IAddressInfo> AddressBook { get; set; }
 
 
-        #region ICommand Implementation
+        #region ICommand ImplementationA
 
         public ICommand AddAddressCommand => new RelayCommand(param => AddAddressInfo_());
 
@@ -61,22 +61,32 @@ namespace ListView
 
         private void AddCachedAddressBook_(string path)
         {
-
-            if(!File.Exists(path))
-            {
-                return;
-            }
-
-            if(new FileInfo(path).Length == 0)
-            {
-                return;
-            }
-
             var cachedAddressBook = m_addressFactory.Create(path);
+
+            //might be null if user sets filename
+            if(path == null)
+            {
+                return;
+            }
 
             foreach(var address in cachedAddressBook)
             {
                 AddressBook.Add(address);
+            }
+        }
+
+        #endregion
+
+
+
+        #region IDisposable Implementation
+
+        public void Dispose()
+        {
+            foreach(var address in AddressBook)
+            {
+                address.Dispose();
+                address = null;
             }
         }
 

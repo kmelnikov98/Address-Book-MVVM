@@ -26,5 +26,16 @@ namespace ListView
 		public string Name { get; set; }
 
 		public string Number { get; set; }
+
+
+
+        #region IDisposable Implementation
+
+        public void Dispose()
+        {
+            //unhook here
+        }
+
+        #endregion
 	}
 }
