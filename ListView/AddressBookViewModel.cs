@@ -14,14 +14,13 @@ namespace ListView
     public class AddressBookViewModel: IDisposable
     {
         private readonly IAddressFactory m_addressFactory;
-        private readonly IAddressReadWriteFactory m_addressReadWriteFactory;
         private readonly string m_filepath;
 
         public AddressBookViewModel()
         {
             AddressBook = new ObservableCollection<IAddressInfo>();
             m_addressFactory = new AddressFactory();
-            AddCachedAddressBook_(m_filepath); //initialize on construction
+            AddCachedAddressBook_(m_filepath);
         }
 
         public IAddressInfo SelectedAddress { get; set; }

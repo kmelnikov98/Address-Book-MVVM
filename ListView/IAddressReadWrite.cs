@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ListView
 {
-	public interface IAddressReadWriteFactory
+	public interface IAddressReadWrite
 	{
-        IAddressInfo Create(string path);
+        void WriteFile(string path, IAddressInfo addressInfo);
     }
 }
