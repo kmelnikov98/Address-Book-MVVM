@@ -14,6 +14,7 @@ namespace ListView
     public class AddressBookViewModel: IDisposable
     {
         private readonly IAddressFactory m_addressFactory;
+        private readonly IAddressReadWriteFactory m_addressReadWriteFactory;
         private readonly string m_filepath;
 
         public AddressBookViewModel()
@@ -61,7 +62,7 @@ namespace ListView
 
         private void AddCachedAddressBook_(string path)
         {
-            var cachedAddressBook = m_addressFactory.Create(path);
+            var cachedAddressBook = new List<IAddressInfo>();
 
             //might be null if user sets filename
             if(path == null)
@@ -77,8 +78,6 @@ namespace ListView
 
         #endregion
 
-
-
         #region IDisposable Implementation
 
         public void Dispose()
@@ -86,7 +85,6 @@ namespace ListView
             foreach(var address in AddressBook)
             {
                 address.Dispose();
-                address = null;
             }
         }
 

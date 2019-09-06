@@ -71,6 +71,7 @@
     <Compile Include="AddressInfo.cs" />
     <Compile Include="AddressInfoOne.cs" />
     <Compile Include="AddressFactory.cs" />
+    <Compile Include="AddressReadWriteFactory.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -78,6 +79,7 @@
     <Compile Include="AddressBookViewModel.cs" />
     <Compile Include="IAddressInfo.cs" />
     <Compile Include="IAddressFactory.cs" />
+    <Compile Include="IAddressReadWriteFactory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

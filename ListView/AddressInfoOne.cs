@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ListView
 {
-	public class AddressInfoOne: IAddressInfo
+	public class AddressInfoOne: IAddressInfo //testing purposes
 	{
 		public AddressInfoOne(string address, string name, string num)
 		: this()
@@ -26,6 +26,11 @@ namespace ListView
 		public string Name { get; set; }
 
 		public string Number { get; set; }
+
+        public void Dispose()
+        {
+
+        }
 	}
 }
 
