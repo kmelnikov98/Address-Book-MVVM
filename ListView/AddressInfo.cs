@@ -26,7 +26,7 @@ namespace ListView
         }
 
 		public AddressInfo()
-		{
+        {
             TextChanged += AddFactory_;
             m_addressReadWrite = new AddressReadWrite();
         }
@@ -83,7 +83,7 @@ namespace ListView
 
         private void AddFactory_()
         {
-            var path = @"C:\AddressBookApp";
+            var path = @"C:\AddressBookApp\AddressBook.txt";
 
             if(m_address !=null && m_name != null && m_number != null)
             {

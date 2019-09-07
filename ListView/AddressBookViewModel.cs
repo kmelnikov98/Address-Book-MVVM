@@ -14,10 +14,13 @@ namespace ListView
     public class AddressBookViewModel: IDisposable
     {
         private readonly IAddressFactory m_addressFactory;
-        private readonly string m_filepath;
+        private readonly IAddressReadWrite m_addressReadWrite;
+        private string m_filepath;
 
         public AddressBookViewModel()
         {
+            m_filepath = @"C:\AddressBookApp\AddressBook.txt";
+            m_addressReadWrite = new AddressReadWrite();
             AddressBook = new ObservableCollection<IAddressInfo>();
             m_addressFactory = new AddressFactory();
             AddCachedAddressBook_(m_filepath);
@@ -61,17 +64,23 @@ namespace ListView
 
         private void AddCachedAddressBook_(string path)
         {
-            var cachedAddressBook = new List<IAddressInfo>();
 
             //might be null if user sets filename
-            if(path == null)
+            if (path == null)
             {
                 return;
             }
 
-            foreach(var address in cachedAddressBook)
+            var count = m_addressReadWrite.AddressFileLineCount(path);
+            
+            for(int i = 0; i < count; i++)
             {
-                AddressBook.Add(address);
+                AddAddressInfo_();
+            }
+            
+            foreach(var address in AddressBook)
+            {
+                m_addressReadWrite.ReadFile(path, address);
             }
         }
 
