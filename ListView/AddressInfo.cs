@@ -17,6 +17,7 @@ namespace ListView
         private string m_address;
         private string m_name;
 
+
         public AddressInfo(string name, string address, string number)
 			: this()
 		{
@@ -27,11 +28,8 @@ namespace ListView
 
 		public AddressInfo()
         {
-            TextChanged += AddFactory_;
             m_addressReadWrite = new AddressReadWrite();
         }
-
-        public event VoidHandler TextChanged;
 
         public string Address
         {
@@ -43,7 +41,6 @@ namespace ListView
                     m_address = value;
                 }
 
-                OnTextChanged_();
             }
         }
 
@@ -57,7 +54,6 @@ namespace ListView
                     m_name = value;
                 }
 
-                OnTextChanged_();
             }
         }
 
@@ -71,17 +67,14 @@ namespace ListView
                     m_number = value;
                 }
 
-                OnTextChanged_();
             }
         }
 
+        #region Private Methods
 
-        private void OnTextChanged_()
-        {
-            TextChanged?.Invoke();
-        }
 
-        private void AddFactory_()
+
+        public void WriteToAddressBook()
         {
             var path = @"C:\AddressBookApp\AddressBook.txt";
 
@@ -91,12 +84,14 @@ namespace ListView
             }
         }
 
+        #endregion
+
 
         #region IDisposable Implementation
 
         public void Dispose()
         {
-            TextChanged -= AddFactory_;
+
         }
 
         #endregion

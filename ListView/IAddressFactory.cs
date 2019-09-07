@@ -9,7 +9,7 @@ namespace ListView
 	public interface IAddressFactory
 	{
 		IAddressInfo Create();
-		IAddressInfo Create(string name, string address, string number);
+        IAddressInfo Create(string name, string address, string number);
 
     }
 }

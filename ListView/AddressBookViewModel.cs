@@ -35,6 +35,8 @@ namespace ListView
 
         public ICommand AddAddressCommand => new RelayCommand(param => AddAddressInfo_());
 
+        public ICommand SaveCommand => new RelayCommand(param => Save_());
+
         public ICommand RemoveAddressCommand => new RelayCommand(param => RemoveAddress_(param));
 
         private void AddAddressInfo_()
@@ -60,6 +62,23 @@ namespace ListView
         #endregion
 
 
+        #region Public Methods
+
+        private void Save_()
+        {
+            if (File.Exists(m_filepath))
+            {
+                File.Delete(m_filepath);
+            }
+
+            foreach (var address in AddressBook)
+            {
+                address.WriteToAddressBook();
+            }
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void AddCachedAddressBook_(string path)
@@ -75,7 +94,7 @@ namespace ListView
             
             for(int i = 0; i < count; i++)
             {
-                AddAddressInfo_();
+                AddressBook.Add(m_addressFactory.Create());
             }
             
             foreach(var address in AddressBook)

@@ -27,6 +27,11 @@ namespace ListView
 
 		public string Number { get; set; }
 
+        public void WriteToAddressBook()
+        {
+
+        }
+
         public void Dispose()
         {
 
