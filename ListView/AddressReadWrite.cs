@@ -34,14 +34,15 @@ namespace ListView
             }
 
             StreamReader addressBook = new StreamReader(path);
-
-            var AddressInfoText = new List<string> { addressInfo.Address, addressInfo.Name, addressInfo.Number };
             var file = File.ReadAllText(path);
 
             addressInfo.Address = addressBook.ReadLine();
             addressInfo.Name = addressBook.ReadLine();
             addressInfo.Number = addressBook.ReadLine();
-            ReplaceTextInFile_(file, AddressInfoText);
+            var AddressInfoText = new List<string> { addressInfo.Address, addressInfo.Name, addressInfo.Number };
+            addressBook.Close();
+
+            ReplaceTextInFile_(path, file, AddressInfoText);
         }
 
         public long AddressFileLineCount(string path)
@@ -54,16 +55,18 @@ namespace ListView
             return (File.ReadLines(path).Count())/3;
         }
 
-        private string ReplaceTextInFile_(string file, List<string> values)
+        private void ReplaceTextInFile_(string path, string file, List<string> values)
         {
             foreach(var value in values)
             {
-                string pattern = @"(?ism)(" + value + @")*?";
+                string pattern = @"([^\w]*" + value + @"[^\w]*)";
                 string replacement = "";
                 Regex rgx = new Regex(pattern);
-                file = rgx.Replace(file, replacement, 1, 0);
+                file = rgx.Replace(file, replacement, 1);
             }
-            return file;
+
+            File.WriteAllText(path, file);
+
         }
     }
 }
