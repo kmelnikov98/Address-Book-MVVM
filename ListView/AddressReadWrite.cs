@@ -18,7 +18,6 @@ namespace ListView
             addressBook.WriteLine(addressInfo.Name);
             addressBook.WriteLine(addressInfo.Number);
             addressBook.Close();
-
         }
 
         public void ReadFile(string path, IAddressInfo addressInfo)

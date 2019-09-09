@@ -59,11 +59,6 @@ namespace ListView
             }
         }
 
-        #endregion
-
-
-        #region Public Methods
-
         private void Save_()
         {
             if (File.Exists(m_filepath))

@@ -40,7 +40,6 @@ namespace ListView
                 {
                     m_address = value;
                 }
-
             }
         }
 
@@ -53,7 +52,6 @@ namespace ListView
                 {
                     m_name = value;
                 }
-
             }
         }
 
@@ -66,7 +64,6 @@ namespace ListView
                 {
                     m_number = value;
                 }
-
             }
         }
 
