@@ -69,8 +69,6 @@ namespace ListView
 
         #region Private Methods
 
-
-
         public void WriteToAddressBook()
         {
             var path = @"C:\AddressBookApp\AddressBook.txt";
