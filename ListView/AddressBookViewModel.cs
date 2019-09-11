@@ -30,6 +30,8 @@ namespace ListView
 
         public ObservableCollection<IAddressInfo> AddressBook { get; set; }
 
+        public string FilePath { get ; set; }
+
 
         #region ICommand ImplementationA
 

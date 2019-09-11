@@ -6,6 +6,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+//not a static class, like FileOps, since its specific to the address class. 
+
 namespace ListView
 {
 	public class AddressReadWrite : IAddressReadWrite

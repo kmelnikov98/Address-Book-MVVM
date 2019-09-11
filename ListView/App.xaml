@@ -80,13 +80,6 @@
                             Padding="0"
                             sw:ControlDoubleClickBehavior.ExecuteCommand="{StaticResource CloseCommand}"
                             sw:ControlDoubleClickBehavior.ExecuteCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
-                            <Image
-                                Width="16"
-                                sw:ShowSystemMenuBehavior.LeftButtonShowAt="{Binding ElementName=WindowContent}"
-                                sw:ShowSystemMenuBehavior.TargetWindow="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                                DockPanel.Dock="Left"
-                                Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=Icon}"
-                                Style="{StaticResource WindowIcon}" />
                         </Label>
                         <Label
                             Grid.Column="1"
