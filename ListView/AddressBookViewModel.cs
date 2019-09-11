@@ -84,7 +84,7 @@ namespace ListView
         private void ChooseFolder_()
         {
             FilePath = FileOps.SelectFileFolder() + @"\AddressBook.txt";
-            FileOps.SaveFileLocation(m_defaultPath); //this is questionable, have to look further 
+            AddCachedAddressBook_(FilePath);
         }
 
         #endregion

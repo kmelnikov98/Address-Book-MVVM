@@ -24,10 +24,5 @@ namespace ListView
 
             return files;
         }
-
-        public static void SaveFileLocation(string path)
-        {
-            File.WriteAllText(path, path);
-        }
     }
 }
