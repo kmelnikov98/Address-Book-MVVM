@@ -98,7 +98,7 @@
                 Width="50"
                 Margin="5"
                 HorizontalAlignment="Right"
-                Command="{Binding SaveCommand}"
+                Command="{Binding ChooseFilePathCommand}"
                 Content="File Path"
                 ToolTip="Choose a folder to save the address data."/>
 

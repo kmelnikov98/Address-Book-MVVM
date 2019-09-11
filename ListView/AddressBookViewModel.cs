@@ -15,15 +15,15 @@ namespace ListView
     {
         private readonly IAddressFactory m_addressFactory;
         private readonly IAddressReadWrite m_addressReadWrite;
-        private string m_filepath;
+        private readonly string m_defaultPath;
 
         public AddressBookViewModel()
         {
-            m_filepath = @"C:\AddressBookApp\AddressBook.txt";
+            m_defaultPath = @"C:\AddressPath.txt";
             m_addressReadWrite = new AddressReadWrite();
             AddressBook = new ObservableCollection<IAddressInfo>();
             m_addressFactory = new AddressFactory();
-            AddCachedAddressBook_(m_filepath);
+            AddCachedAddressBook_(FilePath);
         }
 
         public IAddressInfo SelectedAddress { get; set; }
@@ -40,6 +40,8 @@ namespace ListView
         public ICommand SaveCommand => new RelayCommand(param => Save_());
 
         public ICommand RemoveAddressCommand => new RelayCommand(param => RemoveAddress_(param));
+
+        public ICommand ChooseFilePathCommand => new RelayCommand(param => ChooseFolder_());
 
         private void AddAddressInfo_()
 		{
@@ -63,15 +65,26 @@ namespace ListView
 
         private void Save_()
         {
-            if (File.Exists(m_filepath))
+            if(FilePath == null)
             {
-                File.Delete(m_filepath);
+                return;
+            }
+
+            if (File.Exists(FilePath))
+            {
+                File.Delete(FilePath);
             }
 
             foreach (var address in AddressBook)
             {
-                address.WriteToAddressBook();
+                address.WriteToAddressBook(FilePath);
             }
+        }
+
+        private void ChooseFolder_()
+        {
+            FilePath = FileOps.SelectFileFolder() + @"\AddressBook.txt";
+            FileOps.SaveFileLocation(m_defaultPath); //this is questionable, have to look further 
         }
 
         #endregion
@@ -80,7 +93,6 @@ namespace ListView
 
         private void AddCachedAddressBook_(string path)
         {
-
             //might be null if user sets filename
             if (path == null)
             {

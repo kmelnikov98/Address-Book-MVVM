@@ -11,7 +11,7 @@ namespace ListView
 		string Address { get; set; }
 		string Name { get; set; }
 		string Number { get; set; }
-        void WriteToAddressBook();
+        void WriteToAddressBook(string path);
 
     }
 }

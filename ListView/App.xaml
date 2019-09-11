@@ -79,8 +79,7 @@
                             Grid.Column="0"
                             Padding="0"
                             sw:ControlDoubleClickBehavior.ExecuteCommand="{StaticResource CloseCommand}"
-                            sw:ControlDoubleClickBehavior.ExecuteCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
-                        </Label>
+                            sw:ControlDoubleClickBehavior.ExecuteCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
                         <Label
                             Grid.Column="1"
                             Padding="3,0,0,0"
